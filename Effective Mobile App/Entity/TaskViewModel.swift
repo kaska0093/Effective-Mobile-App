@@ -6,3 +6,32 @@
 //
 
 import Foundation
+
+struct TaskViewModel {
+    
+    private var task: TaskModel
+    
+    init(task: TaskModel) {
+        self.task = task
+    }
+    
+    var copmleted: Bool {
+        task.completed
+    }
+    
+    var id: UUID {
+        task.id ?? UUID()
+    }
+    
+    var name: String {
+        task.todo ?? ""
+    }
+    
+    var dueOn: Date {
+        task.dueOn ?? Date()
+    }
+    
+    var copmletedOn: Date {
+        task.completedOn ?? Date()
+    }
+}

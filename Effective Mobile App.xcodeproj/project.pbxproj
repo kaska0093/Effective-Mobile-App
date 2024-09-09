@@ -10,9 +10,22 @@
 		114112002C8357AC00257C4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114111FF2C8357AC00257C4E /* AppDelegate.swift */; };
 		114112022C8357AC00257C4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112012C8357AC00257C4E /* SceneDelegate.swift */; };
 		114112042C8357AC00257C4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112032C8357AC00257C4E /* ViewController.swift */; };
-		114112072C8357AC00257C4E /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 114112062C8357AC00257C4E /* Base */; };
 		114112092C8357AE00257C4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 114112082C8357AE00257C4E /* Assets.xcassets */; };
 		1141120C2C8357AE00257C4E /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1141120B2C8357AE00257C4E /* Base */; };
+		114112162C8739E300257C4E /* TaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112152C8739E300257C4E /* TaskInteractor.swift */; };
+		114112192C873A0400257C4E /* TaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112182C873A0400257C4E /* TaskPresenter.swift */; };
+		1141121C2C873A4B00257C4E /* TaskEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1141121B2C873A4B00257C4E /* TaskEntity.swift */; };
+		1141121F2C873A9700257C4E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1141121E2C873A9700257C4E /* Router.swift */; };
+		114112232C873AD700257C4E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112222C873AD700257C4E /* CoreDataManager.swift */; };
+		114112252C873AF900257C4E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112242C873AF900257C4E /* NetworkManager.swift */; };
+		114112282C8745FA00257C4E /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112272C8745FA00257C4E /* Task.swift */; };
+		1141122B2C88693000257C4E /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 114112292C88692F00257C4E /* CoreDataModel.xcdatamodeld */; };
+		1141122D2C88700F00257C4E /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1141122C2C88700F00257C4E /* TaskViewModel.swift */; };
+		1141122F2C88722F00257C4E /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1141122E2C88722F00257C4E /* ToDoTableViewCell.swift */; };
+		114112312C88743B00257C4E /* ViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112302C88743B00257C4E /* ViewControllerDataSource.swift */; };
+		114112332C88745000257C4E /* ViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112322C88745000257C4E /* ViewControllerDelegate.swift */; };
+		114112352C88B64800257C4E /* AddNewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112342C88B64800257C4E /* AddNewTaskViewController.swift */; };
+		114112372C88B66E00257C4E /* AddNewTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112362C88B66E00257C4E /* AddNewTaskViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +33,23 @@
 		114111FF2C8357AC00257C4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		114112012C8357AC00257C4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		114112032C8357AC00257C4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		114112062C8357AC00257C4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		114112082C8357AE00257C4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1141120B2C8357AE00257C4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1141120D2C8357AE00257C4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		114112152C8739E300257C4E /* TaskInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInteractor.swift; sourceTree = "<group>"; };
+		114112182C873A0400257C4E /* TaskPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPresenter.swift; sourceTree = "<group>"; };
+		1141121B2C873A4B00257C4E /* TaskEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEntity.swift; sourceTree = "<group>"; };
+		1141121E2C873A9700257C4E /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		114112222C873AD700257C4E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		114112242C873AF900257C4E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		114112272C8745FA00257C4E /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		1141122A2C88692F00257C4E /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		1141122C2C88700F00257C4E /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
+		1141122E2C88722F00257C4E /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
+		114112302C88743B00257C4E /* ViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDataSource.swift; sourceTree = "<group>"; };
+		114112322C88745000257C4E /* ViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDelegate.swift; sourceTree = "<group>"; };
+		114112342C88B64800257C4E /* AddNewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskViewController.swift; sourceTree = "<group>"; };
+		114112362C88B66E00257C4E /* AddNewTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +82,92 @@
 		114111FE2C8357AC00257C4E /* Effective Mobile App */ = {
 			isa = PBXGroup;
 			children = (
+				114112212C873AB300257C4E /* View */,
+				114112172C8739F000257C4E /* Interactor */,
+				1141121A2C873A1100257C4E /* Presenter */,
+				1141121D2C873A5100257C4E /* Entity */,
+				114112202C873AA300257C4E /* Router */,
+				114112262C873B0800257C4E /* Services */,
+				114112132C8738E800257C4E /* Application */,
+				114112142C87390A00257C4E /* Supporting Files */,
+			);
+			path = "Effective Mobile App";
+			sourceTree = "<group>";
+		};
+		114112132C8738E800257C4E /* Application */ = {
+			isa = PBXGroup;
+			children = (
 				114111FF2C8357AC00257C4E /* AppDelegate.swift */,
 				114112012C8357AC00257C4E /* SceneDelegate.swift */,
-				114112032C8357AC00257C4E /* ViewController.swift */,
-				114112052C8357AC00257C4E /* Main.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		114112142C87390A00257C4E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				114112082C8357AE00257C4E /* Assets.xcassets */,
 				1141120A2C8357AE00257C4E /* LaunchScreen.storyboard */,
 				1141120D2C8357AE00257C4E /* Info.plist */,
 			);
-			path = "Effective Mobile App";
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		114112172C8739F000257C4E /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				114112152C8739E300257C4E /* TaskInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1141121A2C873A1100257C4E /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				114112182C873A0400257C4E /* TaskPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1141121D2C873A5100257C4E /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				1141121B2C873A4B00257C4E /* TaskEntity.swift */,
+				114112272C8745FA00257C4E /* Task.swift */,
+				1141122C2C88700F00257C4E /* TaskViewModel.swift */,
+				114112362C88B66E00257C4E /* AddNewTaskViewModel.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		114112202C873AA300257C4E /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				1141121E2C873A9700257C4E /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		114112212C873AB300257C4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				114112342C88B64800257C4E /* AddNewTaskViewController.swift */,
+				114112032C8357AC00257C4E /* ViewController.swift */,
+				114112302C88743B00257C4E /* ViewControllerDataSource.swift */,
+				114112322C88745000257C4E /* ViewControllerDelegate.swift */,
+				1141122E2C88722F00257C4E /* ToDoTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		114112262C873B0800257C4E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				114112242C873AF900257C4E /* NetworkManager.swift */,
+				114112222C873AD700257C4E /* CoreDataManager.swift */,
+				114112292C88692F00257C4E /* CoreDataModel.xcdatamodeld */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +230,6 @@
 			files = (
 				114112092C8357AE00257C4E /* Assets.xcassets in Resources */,
 				1141120C2C8357AE00257C4E /* Base in Resources */,
-				114112072C8357AC00257C4E /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +240,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				114112252C873AF900257C4E /* NetworkManager.swift in Sources */,
+				114112312C88743B00257C4E /* ViewControllerDataSource.swift in Sources */,
+				1141122D2C88700F00257C4E /* TaskViewModel.swift in Sources */,
 				114112042C8357AC00257C4E /* ViewController.swift in Sources */,
+				1141122B2C88693000257C4E /* CoreDataModel.xcdatamodeld in Sources */,
+				114112332C88745000257C4E /* ViewControllerDelegate.swift in Sources */,
+				114112282C8745FA00257C4E /* Task.swift in Sources */,
+				1141122F2C88722F00257C4E /* ToDoTableViewCell.swift in Sources */,
+				114112162C8739E300257C4E /* TaskInteractor.swift in Sources */,
 				114112002C8357AC00257C4E /* AppDelegate.swift in Sources */,
+				1141121F2C873A9700257C4E /* Router.swift in Sources */,
+				114112372C88B66E00257C4E /* AddNewTaskViewModel.swift in Sources */,
+				1141121C2C873A4B00257C4E /* TaskEntity.swift in Sources */,
+				114112192C873A0400257C4E /* TaskPresenter.swift in Sources */,
+				114112232C873AD700257C4E /* CoreDataManager.swift in Sources */,
+				114112352C88B64800257C4E /* AddNewTaskViewController.swift in Sources */,
 				114112022C8357AC00257C4E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +263,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		114112052C8357AC00257C4E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				114112062C8357AC00257C4E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1141120A2C8357AE00257C4E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,10 +402,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 45KC6823ML;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Effective Mobile App/Info.plist";
+				INFOPLIST_FILE = "Effective Mobile App/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,10 +429,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 45KC6823ML;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Effective Mobile App/Info.plist";
+				INFOPLIST_FILE = "Effective Mobile App/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -363,6 +469,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		114112292C88692F00257C4E /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1141122A2C88692F00257C4E /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 1141122A2C88692F00257C4E /* CoreDataModel.xcdatamodel */;
+			name = CoreDataModel.xcdatamodeld;
+			path = "/Users/nikita/Desktop/Effective Mobile App/Effective Mobile App/Services/CoreDataModel.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 114111F42C8357AC00257C4E /* Project object */;
 }
