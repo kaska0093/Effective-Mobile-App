@@ -12,30 +12,33 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if filterSegmentedContoll.selectedSegmentIndex == 0 {
-            let task = viewModel.tasks
-            return task.count
+            return presenter?.getNumberOfTasks(indexOfSection: 0) ?? 0
         } else if filterSegmentedContoll.selectedSegmentIndex == 1 {
-            let task = viewModel.tasks.filter { $0.copmleted }
-            return task.count
+            return presenter?.getNumberOfTasks(indexOfSection: 1) ?? 0
         } else {
-            let task = viewModel.tasks.filter { !$0.copmleted }
-            return task.count
+            return presenter?.getNumberOfTasks(indexOfSection: 2) ?? 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as? ToDoTableViewCell else { return UITableViewCell() }
+        cell.backgroundColor = .viewTable
         
         if filterSegmentedContoll.selectedSegmentIndex == 0 {
-            let task = viewModel.tasks
-            cell.configure(with: task[indexPath.row])
+            guard let task = presenter?.getTaskAt(indexOfCell: indexPath.row, indexOfSection: 0) else {
+                return UITableViewCell()
+            }
+            cell.configure(with: task)
         } else if filterSegmentedContoll.selectedSegmentIndex == 1 {
-            let task = viewModel.tasks.filter { $0.copmleted }[indexPath.row]
+            guard let task = presenter?.getTaskAt(indexOfCell: indexPath.row, indexOfSection: 1) else {
+                return UITableViewCell()
+            }
             cell.configure(with: task)
         } else {
-            let task = viewModel.tasks.filter { !$0.copmleted }[indexPath.row]
+            guard let task = presenter?.getTaskAt(indexOfCell: indexPath.row, indexOfSection: 2) else {
+                return UITableViewCell()
+            }
             cell.configure(with: task)
-
         }
         cell.delegate = self
         return cell

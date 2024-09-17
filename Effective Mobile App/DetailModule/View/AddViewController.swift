@@ -7,13 +7,24 @@
 
 import UIKit
 
-class AddNewTaskViewController: UIViewController {
+class AddViewController: UIViewController {
+    
+    var presenter: AddViewOutput?
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupViews()
+        setupConstrains()
+    }
+    
     lazy var taskNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Task Name"
         return label
     }()
+    
     lazy var taskMameTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -21,12 +32,14 @@ class AddNewTaskViewController: UIViewController {
         textField.borderStyle = .roundedRect
         return textField
     }()
+    
     lazy var dueOnLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Due on"
         return label
     }()
+    
     lazy var dueONDatePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.translatesAutoresizingMaskIntoConstraints = false
@@ -35,25 +48,23 @@ class AddNewTaskViewController: UIViewController {
         return datePicker
     }()
     
-    let viewModel = AddNewTaskViewModel()
+    let viewModel = AddInteractor()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupViews()
-        setupConstrains()
 
-    }
     
     private func setupViews() {
         view.backgroundColor = .cyan
         title = "Add new Task"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTask))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
+                                                            target: self,
+                                                            action: #selector(saveTask))
         [taskNameLabel, taskMameTextField, dueOnLabel, dueONDatePicker].forEach { subView in
             view.addSubview(subView)
         }
     }
     
     private func setupConstrains() {
+        
         NSLayoutConstraint.activate([
             taskNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             taskNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -68,12 +79,10 @@ class AddNewTaskViewController: UIViewController {
             dueONDatePicker.topAnchor.constraint(equalTo: taskMameTextField.bottomAnchor, constant: 8),
             dueONDatePicker.trailingAnchor.constraint(equalTo: taskMameTextField.trailingAnchor)
         ])
-        
     }
-    
-    
-    @objc
-    func saveTask() {
+        
+    @objc func saveTask() {
+        
         guard let taskName = taskMameTextField.text, !taskName.isEmpty else {
             let alert = UIAlertController(title: "Error", message: "Task is empty", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -85,7 +94,13 @@ class AddNewTaskViewController: UIViewController {
         viewModel.addTask(taskName: taskName, dueOn: dueOn)
         navigationController?.popViewController(animated: true)
     }
-
-
+}
+extension AddViewController: AddViewInput {
+    
+    func updateUI() {
+        //
+    }
+    
+    
 }
 

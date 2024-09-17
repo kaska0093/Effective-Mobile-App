@@ -7,11 +7,11 @@
 
 import Foundation
 
-class NetworkManager {
-    static let shared = NetworkManager()
-    private init(){}
+class NetworkManager: NetworkManagerInputProtocol {
     
-    func fetchData() async throws -> TaskResults {
+
+    func fetchData() async throws -> TaskResultsFromNetwork {
+        
         guard let url = URL(string: "https://dummyjson.com/todos") else {
             throw NeworkingURLError.badURL
         }
@@ -19,9 +19,32 @@ class NetworkManager {
         let responce = try await URLSession.shared.data(from: url)
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        let result = try decoder.decode(TaskResults.self, from: responce.0)
+        let result = try decoder.decode(TaskResultsFromNetwork.self, from: responce.0)
         return result
+    }
+    
+    func fetchDataComplition(complition: @escaping (Result<TaskResultsFromNetwork, Error>) -> Void) {
         
+        guard let url = URL(string: "https://dummyjson.com/todos") else {
+            complition(.failure(NeworkingURLError.badURL))
+            return
+        }
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data else {
+                if let error {
+                    complition(.failure(error))
+                }
+                return
+            }
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                do {
+                        let taskData = try decoder.decode(TaskResultsFromNetwork.self, from: data)
+                        complition(.success(taskData))
+                } catch {
+                    complition(.failure(NeworkingURLError.invalidURL))
+                }
+        }.resume()
     }
 }
 

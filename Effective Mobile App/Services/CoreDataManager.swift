@@ -10,8 +10,20 @@ import CoreData
 
 class CoreDataManager {
     
-    static let shared = CoreDataManager()
-    private init() {}
+    var interactor: CoreDataOtputProtocol?
+    
+    func saveContext() {
+        let context = persistantContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
+    
     
     lazy var persistantContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "CoreDataModel")
@@ -26,43 +38,50 @@ class CoreDataManager {
     var context: NSManagedObjectContext {
         persistantContainer.viewContext
     }
-    
-    func saveContext() {
-        let context = persistantContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-    
-    func getAll() -> [TaskModel] {
-        var tasks = [TaskModel]()
-        let fetchRequest: NSFetchRequest<TaskModel> = TaskModel.fetchRequest()
-        let sortByDueDate = NSSortDescriptor(key: "dueOn", ascending: true)
-        fetchRequest.sortDescriptors = [sortByDueDate]
-        do {
-            tasks = try context.fetch(fetchRequest)
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-        return tasks
-    }
-    
+}
+
+extension CoreDataManager: AddCoreDataInputProtocol {
+
     func addNewTask(taskName: String, dueOn: Date) {
-        let task = TaskModel(context: context)
+        let task = TaskModelFromDB(context: context)
         task.todo = taskName
         task.dueOn = dueOn
         task.id = UUID()
         task.completed = false
         saveContext()
     }
+}
+
+extension CoreDataManager: CoreDataInputProtocol {
     
+    func getDataFromStorage() {
+        
+        var tasks = [TaskModelFromDB]()
+        let fetchRequest: NSFetchRequest<TaskModelFromDB> = TaskModelFromDB.fetchRequest()
+        let sortByDueDate = NSSortDescriptor(key: "dueOn", ascending: true)
+        fetchRequest.sortDescriptors = [sortByDueDate]
+        
+        do {
+            tasks = try context.fetch(fetchRequest)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    
+        let mapper = Mapper()
+  
+        let result = tasks.map(TaskEntity.init)
+    
+        let bif = result.map { task in
+            return mapper.mapToDTO(from: task)
+        }
+
+        interactor?.retrieveData(bif)
+    }
+
+        
+          
     func toogleCompleted(id: UUID) {
-        let fetchRequest: NSFetchRequest<TaskModel> = TaskModel.fetchRequest()
+        let fetchRequest: NSFetchRequest<TaskModelFromDB> = TaskModelFromDB.fetchRequest()
         let predicate = NSPredicate(format: "id=%@", id.uuidString)
         fetchRequest.predicate = predicate
         
@@ -81,7 +100,7 @@ class CoreDataManager {
     }
     
     func delete(id: UUID) {
-        let fetchRequest: NSFetchRequest<TaskModel> = TaskModel.fetchRequest()
+        let fetchRequest: NSFetchRequest<TaskModelFromDB> = TaskModelFromDB.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id=%@", id.uuidString)
         do {
             let fetchTasks = try context.fetch(fetchRequest)

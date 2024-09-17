@@ -44,10 +44,7 @@ class ToDoTableViewCell: UITableViewCell {
     lazy var completeButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-    //    button.setTitle("Нажми меня", for: .normal)
-    //    button.backgroundColor = .lightGray
-        button.layer.cornerRadius = 10
-   //     button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.layer.cornerRadius = 20
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
 
@@ -87,7 +84,7 @@ class ToDoTableViewCell: UITableViewCell {
         stack.axis = .horizontal
         stack.alignment = .leading
         stack.spacing = UIStackView.spacingUseSystem
-        stack.backgroundColor = UIColor.secondarySystemBackground
+        stack.backgroundColor = .cell
         stack.isLayoutMarginsRelativeArrangement = true
         stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
         stack.layer.cornerRadius = 20
@@ -181,7 +178,7 @@ class ToDoTableViewCell: UITableViewCell {
         ])
     }
     
-    func configure(with task: TaskViewModel) {
+    func configure(with task: TaskEntityDTO) {
         let attributedString = NSMutableAttributedString(string: task.name)
 
         if task.copmleted {

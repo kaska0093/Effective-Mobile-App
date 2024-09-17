@@ -7,53 +7,57 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+
+
+extension ViewController: MainViewInput {
     
-    var viewModel = TaskListViewModel()
+    func updateUI() {
+        self.tableView.reloadData()
+        segmentedControlSetup()
+    }
+    
+    func showErrorMessage(_ message: String) {
+        //
+    }  
+}
+
+class ViewController: UIViewController {
+    var presenter: MainViewOutput?
+
+
+    override func viewWillAppear(_ animated: Bool) {
+        let hasLaunchedBefore = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
+        
+        if !hasLaunchedBefore {
+                presenter?.presenterAddToDoFromNetwork()
+        } else {
+             presenter?.viewWillAppear()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
-      // navigationController?.navigationBar.prefersLargeTitles = true
-      //  navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewTask))
+        view.backgroundColor = .viewTable
         setupView()
         addConstraints()
-
-        let hasLaunchedBefore = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
-        if !hasLaunchedBefore {
-            Task {
-                do {
-                    let result = try await NetworkManager.shared.fetchData()
-                    for i in 0..<result.todos.count {
-                        CoreDataManager.shared.addNewTask(taskName: result.todos[i].todo,
-                                                          dueOn: Date.now)
-                    }
-                    self.viewModel = TaskListViewModel()
-                    self.viewModel.getAll()
-                    tableView.reloadData()
-                    UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
-                } catch {
-                    
-                }
-            }
-        } else {
-            self.viewModel = TaskListViewModel()
-            self.viewModel.getAll()
-            tableView.reloadData()
-        }
     }
+    
     @objc func addNewTask() {
-        navigationController?.pushViewController(AddNewTaskViewController(), animated: true)
-        print("add VC")
+        presenter?.addTodo()
     }
     
-
-    
+ 
     lazy var lable: UILabel = {
         let label = UILabel()
-        label.text = "Today's Task \(getCurrentDay())"
+        let attributes: [NSAttributedString.Key : Any] = [
+            .font: UIFont.systemFont(ofSize: 16, weight: .bold),
+            .foregroundColor: UIColor.black
+        ]
+        let attributedString = NSAttributedString(string: "Today's Task \(getCurrentDay())",
+                                                  attributes: attributes)
+        label.attributedText = attributedString
         label.textAlignment = .center
-        label.backgroundColor = .green
+        label.backgroundColor = .viewTable
         label.numberOfLines = 0
         return label
     }()
@@ -71,12 +75,10 @@ class ViewController: UIViewController {
 
         let tableView = UITableView()
 
-        tableView.backgroundColor = .lightGray
-    //  tableView.separatorColor = .red
-    //  tableView.separatorStyle = .singleLine
+        tableView.backgroundColor = .viewTable
+        tableView.separatorColor = .viewTable
         tableView.layer.cornerRadius = 10
-        tableView.layer.borderWidth = 1
-        tableView.layer.borderColor = UIColor.red.cgColor
+        tableView.layer.borderColor = UIColor.viewTable.cgColor
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -89,12 +91,12 @@ class ViewController: UIViewController {
     
     lazy var addButton: UIButton = {
         let button = UIButton()
-       // button.setImage(.add, for: .normal)
-        button.backgroundColor = .blue
+        button.backgroundColor = .buttonAdd
         button.layer.cornerRadius = 20
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(addNewTask), for: .touchUpInside)
         button.setTitle("+ New Task", for: .normal)
+        button.setTitleColor(UIColor.blue, for: .normal)
         return button
     }()
     
@@ -109,8 +111,16 @@ class ViewController: UIViewController {
     }()
     
     lazy var filterSegmentedContoll: UISegmentedControl = {
-        let segmentedControl = UISegmentedControl(items: ["All", "Opened", "Closed"])
+        guard let taskSummary = presenter?.getTasksCountByType() else {
+            return UISegmentedControl()
+        }
+        let segmentedControl = UISegmentedControl(items: ["All (\(taskSummary.common))",
+                                                          "Closed (\(taskSummary.complete))",
+                                                          "Open (\(taskSummary.incomplete))"])
         segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.blue], for: .selected)
+        segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
+        segmentedControl.backgroundColor = .clear
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
         return segmentedControl
     }()
@@ -118,17 +128,16 @@ class ViewController: UIViewController {
 
     
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        // здесь обрабатываем изменение выбранного сегмента
-        let selectedIndex = sender.selectedSegmentIndex
-        print("Selected segment index: \(selectedIndex)")
         tableView.reloadData()
-        getCountTasksByType()
     }
     
-    func getCountTasksByType() {
-        let taskSummary = viewModel.getTasksByType()
-        print(taskSummary.complete.description)
-        print(taskSummary.incomplete.description)
+    func segmentedControlSetup() {
+        guard let taskSummary = presenter?.getTasksCountByType() else {
+            return
+        }    
+        filterSegmentedContoll.setTitle("All (\(taskSummary.common))", forSegmentAt: 0)
+        filterSegmentedContoll.setTitle("Closed (\(taskSummary.complete))", forSegmentAt: 1)
+        filterSegmentedContoll.setTitle("Open (\(taskSummary.incomplete))", forSegmentAt: 2)
     }
 
     
@@ -138,11 +147,7 @@ class ViewController: UIViewController {
             view.addSubview(subView)
         }
     }
-    
-    
-
-    
-    
+ 
     func addConstraints() {
         
         NSLayoutConstraint.activate([
@@ -158,8 +163,7 @@ class ViewController: UIViewController {
             
             filterSegmentedContoll.topAnchor.constraint(equalTo: lable.bottomAnchor, constant: 10),
             filterSegmentedContoll.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            filterSegmentedContoll.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-
+            filterSegmentedContoll.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -100),
 
             
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
@@ -167,13 +171,6 @@ class ViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: filterSegmentedContoll.bottomAnchor, constant: 10),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
-        
-        print("SegmentedControl frame: \(filterSegmentedContoll.frame)")
-        print("SegmentedControl superview: \(filterSegmentedContoll.superview?.description ?? "nil")")
-
-
     }
-
-
 }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
-    <entity name="TaskModel" representedClassName="TaskModel" syncable="YES" codeGenerationType="class">
+    <entity name="TaskModelFromDB" representedClassName="TaskModelFromDB" syncable="YES" codeGenerationType="class">
         <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="completedOn" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dueOn" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -8,7 +8,7 @@
         <attribute name="todo" optional="YES" attributeType="String"/>
         <attribute name="userID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <fetchedProperty name="fetchedProperty" optional="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="TaskModel"/>
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="TaskModelFromDB"/>
         </fetchedProperty>
     </entity>
 </model>

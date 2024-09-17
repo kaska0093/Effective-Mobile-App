@@ -18,14 +18,17 @@
 		1141121F2C873A9700257C4E /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1141121E2C873A9700257C4E /* Router.swift */; };
 		114112232C873AD700257C4E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112222C873AD700257C4E /* CoreDataManager.swift */; };
 		114112252C873AF900257C4E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112242C873AF900257C4E /* NetworkManager.swift */; };
-		114112282C8745FA00257C4E /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112272C8745FA00257C4E /* Task.swift */; };
 		1141122B2C88693000257C4E /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 114112292C88692F00257C4E /* CoreDataModel.xcdatamodeld */; };
-		1141122D2C88700F00257C4E /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1141122C2C88700F00257C4E /* TaskViewModel.swift */; };
 		1141122F2C88722F00257C4E /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1141122E2C88722F00257C4E /* ToDoTableViewCell.swift */; };
 		114112312C88743B00257C4E /* ViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112302C88743B00257C4E /* ViewControllerDataSource.swift */; };
 		114112332C88745000257C4E /* ViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112322C88745000257C4E /* ViewControllerDelegate.swift */; };
-		114112352C88B64800257C4E /* AddNewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112342C88B64800257C4E /* AddNewTaskViewController.swift */; };
-		114112372C88B66E00257C4E /* AddNewTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112362C88B66E00257C4E /* AddNewTaskViewModel.swift */; };
+		114112352C88B64800257C4E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112342C88B64800257C4E /* AddViewController.swift */; };
+		114112372C88B66E00257C4E /* AddInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114112362C88B66E00257C4E /* AddInteractor.swift */; };
+		116698962C931BEC0063BB7A /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116698952C931BEC0063BB7A /* Protocols.swift */; };
+		116698982C946FB40063BB7A /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116698972C946FB40063BB7A /* Mapper.swift */; };
+		11F0B89A2C998F1D005FDB85 /* AddRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F0B8992C998F1D005FDB85 /* AddRouter.swift */; };
+		11F0B89C2C9990B5005FDB85 /* AddPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F0B89B2C9990B5005FDB85 /* AddPresenter.swift */; };
+		11F0B89E2C9991EF005FDB85 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F0B89D2C9991EF005FDB85 /* Protocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,14 +45,17 @@
 		1141121E2C873A9700257C4E /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		114112222C873AD700257C4E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		114112242C873AF900257C4E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		114112272C8745FA00257C4E /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		1141122A2C88692F00257C4E /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
-		1141122C2C88700F00257C4E /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		1141122E2C88722F00257C4E /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		114112302C88743B00257C4E /* ViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDataSource.swift; sourceTree = "<group>"; };
 		114112322C88745000257C4E /* ViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDelegate.swift; sourceTree = "<group>"; };
-		114112342C88B64800257C4E /* AddNewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskViewController.swift; sourceTree = "<group>"; };
-		114112362C88B66E00257C4E /* AddNewTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskViewModel.swift; sourceTree = "<group>"; };
+		114112342C88B64800257C4E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		114112362C88B66E00257C4E /* AddInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInteractor.swift; sourceTree = "<group>"; };
+		116698952C931BEC0063BB7A /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		116698972C946FB40063BB7A /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
+		11F0B8992C998F1D005FDB85 /* AddRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRouter.swift; sourceTree = "<group>"; };
+		11F0B89B2C9990B5005FDB85 /* AddPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPresenter.swift; sourceTree = "<group>"; };
+		11F0B89D2C9991EF005FDB85 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,11 +88,8 @@
 		114111FE2C8357AC00257C4E /* Effective Mobile App */ = {
 			isa = PBXGroup;
 			children = (
-				114112212C873AB300257C4E /* View */,
-				114112172C8739F000257C4E /* Interactor */,
-				1141121A2C873A1100257C4E /* Presenter */,
-				1141121D2C873A5100257C4E /* Entity */,
-				114112202C873AA300257C4E /* Router */,
+				11F0B8932C9984A9005FDB85 /* MainModule */,
+				11F0B8922C99849A005FDB85 /* DetailModule */,
 				114112262C873B0800257C4E /* Services */,
 				114112132C8738E800257C4E /* Application */,
 				114112142C87390A00257C4E /* Supporting Files */,
@@ -117,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				114112152C8739E300257C4E /* TaskInteractor.swift */,
+				116698972C946FB40063BB7A /* Mapper.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -133,9 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				1141121B2C873A4B00257C4E /* TaskEntity.swift */,
-				114112272C8745FA00257C4E /* Task.swift */,
-				1141122C2C88700F00257C4E /* TaskViewModel.swift */,
-				114112362C88B66E00257C4E /* AddNewTaskViewModel.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -151,7 +152,6 @@
 		114112212C873AB300257C4E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				114112342C88B64800257C4E /* AddNewTaskViewController.swift */,
 				114112032C8357AC00257C4E /* ViewController.swift */,
 				114112302C88743B00257C4E /* ViewControllerDataSource.swift */,
 				114112322C88745000257C4E /* ViewControllerDelegate.swift */,
@@ -168,6 +168,63 @@
 				114112292C88692F00257C4E /* CoreDataModel.xcdatamodeld */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		11F0B8922C99849A005FDB85 /* DetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				11F0B89D2C9991EF005FDB85 /* Protocols.swift */,
+				11F0B8942C9984ED005FDB85 /* View */,
+				11F0B8952C9984F3005FDB85 /* Interactor */,
+				11F0B8982C99851D005FDB85 /* Presenter */,
+				11F0B8962C99850B005FDB85 /* Router */,
+			);
+			path = DetailModule;
+			sourceTree = "<group>";
+		};
+		11F0B8932C9984A9005FDB85 /* MainModule */ = {
+			isa = PBXGroup;
+			children = (
+				116698952C931BEC0063BB7A /* Protocols.swift */,
+				114112212C873AB300257C4E /* View */,
+				114112172C8739F000257C4E /* Interactor */,
+				1141121A2C873A1100257C4E /* Presenter */,
+				1141121D2C873A5100257C4E /* Entity */,
+				114112202C873AA300257C4E /* Router */,
+			);
+			path = MainModule;
+			sourceTree = "<group>";
+		};
+		11F0B8942C9984ED005FDB85 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				114112342C88B64800257C4E /* AddViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		11F0B8952C9984F3005FDB85 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				114112362C88B66E00257C4E /* AddInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		11F0B8962C99850B005FDB85 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				11F0B8992C998F1D005FDB85 /* AddRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		11F0B8982C99851D005FDB85 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				11F0B89B2C9990B5005FDB85 /* AddPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,21 +299,24 @@
 			files = (
 				114112252C873AF900257C4E /* NetworkManager.swift in Sources */,
 				114112312C88743B00257C4E /* ViewControllerDataSource.swift in Sources */,
-				1141122D2C88700F00257C4E /* TaskViewModel.swift in Sources */,
+				11F0B89C2C9990B5005FDB85 /* AddPresenter.swift in Sources */,
+				116698962C931BEC0063BB7A /* Protocols.swift in Sources */,
 				114112042C8357AC00257C4E /* ViewController.swift in Sources */,
 				1141122B2C88693000257C4E /* CoreDataModel.xcdatamodeld in Sources */,
 				114112332C88745000257C4E /* ViewControllerDelegate.swift in Sources */,
-				114112282C8745FA00257C4E /* Task.swift in Sources */,
+				11F0B89A2C998F1D005FDB85 /* AddRouter.swift in Sources */,
 				1141122F2C88722F00257C4E /* ToDoTableViewCell.swift in Sources */,
 				114112162C8739E300257C4E /* TaskInteractor.swift in Sources */,
 				114112002C8357AC00257C4E /* AppDelegate.swift in Sources */,
 				1141121F2C873A9700257C4E /* Router.swift in Sources */,
-				114112372C88B66E00257C4E /* AddNewTaskViewModel.swift in Sources */,
+				114112372C88B66E00257C4E /* AddInteractor.swift in Sources */,
 				1141121C2C873A4B00257C4E /* TaskEntity.swift in Sources */,
 				114112192C873A0400257C4E /* TaskPresenter.swift in Sources */,
+				11F0B89E2C9991EF005FDB85 /* Protocols.swift in Sources */,
 				114112232C873AD700257C4E /* CoreDataManager.swift in Sources */,
-				114112352C88B64800257C4E /* AddNewTaskViewController.swift in Sources */,
+				114112352C88B64800257C4E /* AddViewController.swift in Sources */,
 				114112022C8357AC00257C4E /* SceneDelegate.swift in Sources */,
+				116698982C946FB40063BB7A /* Mapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
