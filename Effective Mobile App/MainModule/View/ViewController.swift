@@ -48,6 +48,7 @@ class ViewController: UIViewController {
     
  
     lazy var lable: UILabel = {
+        
         let label = UILabel()
         let attributes: [NSAttributedString.Key : Any] = [
             .font: UIFont.systemFont(ofSize: 16, weight: .bold),
@@ -142,6 +143,8 @@ class ViewController: UIViewController {
 
     
     func setupView() {
+        navigationItem.titleView?.frame.size.height = 5
+        
         [lable, addButton, tableView, filterSegmentedContoll].forEach { subView in
             subView.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(subView)

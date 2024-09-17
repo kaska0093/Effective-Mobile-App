@@ -13,10 +13,12 @@ protocol CustomCellDelegate: AnyObject {
 
 
 class ToDoTableViewCell: UITableViewCell {
+    
     weak var delegate: CustomCellDelegate?
 
     
     lazy var taskNameLabel: UILabel = {
+        
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .black)
@@ -27,6 +29,7 @@ class ToDoTableViewCell: UITableViewCell {
     }()
     
     lazy var dueOrCompetedLabel: UILabel = {
+        
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14)
@@ -34,14 +37,8 @@ class ToDoTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var competedLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 14)
-        return label
-    }()
-    
     lazy var completeButton: UIButton = {
+        
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 20
@@ -51,34 +48,27 @@ class ToDoTableViewCell: UITableViewCell {
     }()
     
     lazy var stackView: UIStackView = {
+        
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.alignment = .fill
         stack.spacing = UIStackView.spacingUseSystem
-//        stack.backgroundColor = UIColor.secondarySystemBackground
-//        stack.isLayoutMarginsRelativeArrangement = true
-//        stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
-//        stack.layer.cornerRadius = 20
-//        stack.clipsToBounds = true
         return stack
     }()
     
     lazy var completeStackView: UIStackView = {
+        
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.alignment = .fill
         stack.spacing = UIStackView.spacingUseSystem
-      //  stack.backgroundColor = UIColor.secondarySystemBackground
-      //  stack.isLayoutMarginsRelativeArrangement = true
-       // stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
-      //  stack.layer.cornerRadius = 20
-      //  stack.clipsToBounds = true
         return stack
     }()
     
     lazy var commonSteckView: UIStackView = {
+        
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
@@ -96,17 +86,6 @@ class ToDoTableViewCell: UITableViewCell {
     @objc func buttonTapped(sender: UIButton) {
         delegate?.didTapButton(in: self)
         sender.isSelected.toggle()
-
-        // Изменяем внешний вид кнопки в зависимости от состояния
-        if sender.isSelected {
-       //     sender.setTitle("Выбрано", for: .normal)
-       //     sender.backgroundColor = .blue // Цвет фона для выбраной кнопки
-       //    sender.setTitleColor(.white, for: .normal) // Цвет текста для выбраной кнопки
-        } else {
-        //    sender.setTitle("Нажми меня", for: .normal)
-        //    sender.backgroundColor = .lightGray // Цвет фона для невыбранной кнопки
-        //    sender.setTitleColor(.black, for: .normal) // Цвет текста для невыбранной кнопки
-        }
     }
 
     
@@ -127,18 +106,10 @@ class ToDoTableViewCell: UITableViewCell {
         stackView.addArrangedSubview(taskNameLabel)
         stackView.addArrangedSubview(dueOrCompetedLabel)
         
-       // completeStackView.addArrangedSubview(completeButton)
-       // completeStackView.addArrangedSubview(competedLabel)
-        
         commonSteckView.addArrangedSubview(stackView)
         commonSteckView.addArrangedSubview(completeButton)
         
         contentView.addSubview(commonSteckView)
-        
-//        [commonSteckView].forEach { subView in
-//            contentView.addSubview(subView)
-//        }
-        
     }
     
     func setupConstraints() {
@@ -147,38 +118,15 @@ class ToDoTableViewCell: UITableViewCell {
             completeButton.widthAnchor.constraint(equalToConstant: 40),
             completeButton.heightAnchor.constraint(equalToConstant: 40),
             
-         //   completeStackView.widthAnchor.constraint(equalToConstant: 50),
-
-            
             commonSteckView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
             commonSteckView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             commonSteckView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
             commonSteckView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            
-            
-            
-//            taskNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-//            taskNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-//            taskNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            
-    //        completeButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-  //          completeButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 10),
-  //          completeButton.leadingAnchor.constraint(equalTo: taskNameLabel.rightAnchor, constant: 10),
- 
-            
-//            dueOrCompetedLabel.topAnchor.constraint(equalTo: taskNameLabel.bottomAnchor, constant: 16),
-//            dueOrCompetedLabel.leadingAnchor.constraint(equalTo: taskNameLabel.leadingAnchor),
-//            dueOrCompetedLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            
-//                completeStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-//                completeStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//                completeStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-            
-         //   contentView.bottomAnchor.constraint(greaterThanOrEqualTo: taskNameLabel.bottomAnchor, constant: 8)
         ])
     }
     
     func configure(with task: TaskEntityDTO) {
+        
         let attributedString = NSMutableAttributedString(string: task.name)
 
         if task.copmleted {
@@ -191,31 +139,18 @@ class ToDoTableViewCell: UITableViewCell {
         }
         taskNameLabel.attributedText = attributedString
         
-        dueOrCompetedLabel.text = task.copmleted ? "Completed on: \(task.copmletedOn.formatted(date: .abbreviated, time: .omitted))" : "Due on: \(task.dueOn.formatted(date: .abbreviated, time: .omitted))"
+        dueOrCompetedLabel.text = task.copmleted ?
+                                            "Completed on: \(task.copmletedOn.formatted(date: .numeric, time: .shortened))" :
+                                            "Due on: \(task.dueOn.formatted(date: .numeric, time: .shortened))"
+        //formatted(date: .abbreviated, time: .omitted))"
         
-        competedLabel.text = task.copmleted ? "Completed" : "Not Completed"
         completeButton.backgroundColor = task.copmleted ? .systemGreen : .gray
         if task.copmleted {
-            completeButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .selected) // Проверенный
+            completeButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
 
         } else {
-            completeButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal) // Непроверенный
+            completeButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
 
         }
-
-        competedLabel.textColor = task.copmleted ? .green : .red
     }
 }
-
-//extension UITableViewCell {
-//    override open func layoutSubviews() {
-//        super.layoutSubviews()
-//        self.contentView.backgroundColor = .white
-//        self.backgroundColor = .clear
-//        self.layer.masksToBounds = false
-//        self.layer.shadowColor = UIColor.black.cgColor
-//        self.layer.shadowOpacity = 0.1
-//        self.layer.shadowRadius = 3
-//        self.layer.shadowOffset = CGSize(width: 0, height: 2)
-//    }
-//}

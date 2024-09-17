@@ -37,10 +37,8 @@ class MainRouter: TodoListRouterProtocol {
     }
     
     func presentToDoDetailScreen(from view: MainViewInput, for todo: TaskEntityDTO?) {
-        guard let task = todo else {
-            return
-        }
-        let addVC = AddRouter.createTodoDetailRouterModule(with: task)
+
+        let addVC = AddRouter.createTodoDetailRouterModule(with: todo)
         
         guard let viewVC = view as? UIViewController else {
             fatalError("Invalid View Protocol type")

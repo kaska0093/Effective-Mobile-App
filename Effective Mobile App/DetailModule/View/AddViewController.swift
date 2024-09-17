@@ -10,10 +10,13 @@ import UIKit
 class AddViewController: UIViewController {
     
     var presenter: AddViewOutput?
+    var keyForAdd: Bool?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .viewTable
+
         setupViews()
         setupConstrains()
     }
@@ -21,11 +24,20 @@ class AddViewController: UIViewController {
     lazy var taskNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Task Name"
+
+        let attributes: [NSAttributedString.Key : Any] = [
+            .font: UIFont.systemFont(ofSize: 26, weight: .bold),
+            .foregroundColor: UIColor.black
+        ]
+        let attributedString = NSAttributedString(string: "Task Name",
+                                                  attributes: attributes)
+        label.attributedText = attributedString
+
         return label
     }()
     
     lazy var taskMameTextField: UITextField = {
+        
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Enter task name"
@@ -34,9 +46,18 @@ class AddViewController: UIViewController {
     }()
     
     lazy var dueOnLabel: UILabel = {
+        
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Due on"
+
+        let attributes: [NSAttributedString.Key : Any] = [
+            .font: UIFont.systemFont(ofSize: 26, weight: .bold),
+            .foregroundColor: UIColor.black
+        ]
+        let attributedString = NSAttributedString(string: "Due on",
+                                                  attributes: attributes)
+        label.attributedText = attributedString
+
         return label
     }()
     
@@ -44,20 +65,24 @@ class AddViewController: UIViewController {
         let datePicker = UIDatePicker()
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         datePicker.minimumDate = Date()
-        datePicker.datePickerMode = .date
+        datePicker.datePickerMode = .dateAndTime
         return datePicker
     }()
     
-    let viewModel = AddInteractor()
-
-
     
     private func setupViews() {
-        view.backgroundColor = .cyan
-        title = "Add new Task"
+        
+        if keyForAdd! {
+            title = "Add new Task"
+
+        } else {
+            title = "Edit Task"
+        }
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
                                                             target: self,
                                                             action: #selector(saveTask))
+
+        
         [taskNameLabel, taskMameTextField, dueOnLabel, dueONDatePicker].forEach { subView in
             view.addSubview(subView)
         }
@@ -91,14 +116,21 @@ class AddViewController: UIViewController {
         }
         
         let dueOn = dueONDatePicker.date
-        viewModel.addTask(taskName: taskName, dueOn: dueOn)
-        navigationController?.popViewController(animated: true)
+        
+        if keyForAdd! {
+            presenter?.userPressedAddButton(taskName: taskName, dueOn: dueOn)
+        } else {
+            title = "Edit Task"
+            presenter?.userPressedUpdateButton(taskName: taskName, dueOn: dueOn)
+        }
     }
+    
 }
 extension AddViewController: AddViewInput {
     
-    func updateUI() {
-        //
+    func updateUI(task:String, dueOn: Date) {
+        taskMameTextField.text = task
+        dueONDatePicker.date = dueOn
     }
     
     

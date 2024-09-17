@@ -9,7 +9,7 @@ import UIKit
 
 class AddRouter: AddRouterProtocol {
 
-    static func createTodoDetailRouterModule(with todo: TaskEntityDTO) -> UIViewController {
+    static func createTodoDetailRouterModule(with todo: TaskEntityDTO?) -> UIViewController {
         
         let addViewController = AddViewController()
         
@@ -19,6 +19,7 @@ class AddRouter: AddRouterProtocol {
         let coreDadaManager = CoreDataManager()
         
         addViewController.presenter = presenter
+        addViewController.keyForAdd = true
         
         presenter.view = addViewController
         presenter.router = router
@@ -26,9 +27,19 @@ class AddRouter: AddRouterProtocol {
         
         interactor.presenter = presenter
         interactor.coreDaraManager = coreDadaManager
-        interactor.selectedTask = todo
-        
-        
+        if let task = todo {
+            interactor.selectedTask = todo
+            addViewController.keyForAdd = false
+
+        }
+      
         return addViewController
+    }
+    
+    func navigateBackToListViewController(from view: AddViewInput) {
+        guard let viewVC = view as? UIViewController else {
+            fatalError("Invalid view protocol type")
+        }
+        viewVC.navigationController?.popViewController(animated: true)
     }
 }

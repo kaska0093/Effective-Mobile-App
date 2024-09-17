@@ -11,6 +11,7 @@ import UIKit
 extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if filterSegmentedContoll.selectedSegmentIndex == 0 {
             return presenter?.getNumberOfTasks(indexOfSection: 0) ?? 0
         } else if filterSegmentedContoll.selectedSegmentIndex == 1 {
@@ -21,6 +22,7 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as? ToDoTableViewCell else { return UITableViewCell() }
         cell.backgroundColor = .viewTable
         
@@ -42,19 +44,5 @@ extension ViewController: UITableViewDataSource {
         }
         cell.delegate = self
         return cell
-    }
-    
-//    private func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return section == 0 ? 0 : 40 // устанавливает высоту заголовка
-//    }
-//
-//    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-//        return "Конец секции \(section)" // возвращает текст для подвала каждой секции
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return section == 0 ? 0 : 20 // устанавливает высоту подвала
-//    }
-    
-    
+    }  
 }

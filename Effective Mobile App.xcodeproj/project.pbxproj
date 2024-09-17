@@ -28,7 +28,7 @@
 		116698982C946FB40063BB7A /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116698972C946FB40063BB7A /* Mapper.swift */; };
 		11F0B89A2C998F1D005FDB85 /* AddRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F0B8992C998F1D005FDB85 /* AddRouter.swift */; };
 		11F0B89C2C9990B5005FDB85 /* AddPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F0B89B2C9990B5005FDB85 /* AddPresenter.swift */; };
-		11F0B89E2C9991EF005FDB85 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F0B89D2C9991EF005FDB85 /* Protocols.swift */; };
+		11F0B89E2C9991EF005FDB85 /* AddProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F0B89D2C9991EF005FDB85 /* AddProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +55,7 @@
 		116698972C946FB40063BB7A /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 		11F0B8992C998F1D005FDB85 /* AddRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRouter.swift; sourceTree = "<group>"; };
 		11F0B89B2C9990B5005FDB85 /* AddPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPresenter.swift; sourceTree = "<group>"; };
-		11F0B89D2C9991EF005FDB85 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		11F0B89D2C9991EF005FDB85 /* AddProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +173,7 @@
 		11F0B8922C99849A005FDB85 /* DetailModule */ = {
 			isa = PBXGroup;
 			children = (
-				11F0B89D2C9991EF005FDB85 /* Protocols.swift */,
+				11F0B89D2C9991EF005FDB85 /* AddProtocols.swift */,
 				11F0B8942C9984ED005FDB85 /* View */,
 				11F0B8952C9984F3005FDB85 /* Interactor */,
 				11F0B8982C99851D005FDB85 /* Presenter */,
@@ -312,7 +312,7 @@
 				114112372C88B66E00257C4E /* AddInteractor.swift in Sources */,
 				1141121C2C873A4B00257C4E /* TaskEntity.swift in Sources */,
 				114112192C873A0400257C4E /* TaskPresenter.swift in Sources */,
-				11F0B89E2C9991EF005FDB85 /* Protocols.swift in Sources */,
+				11F0B89E2C9991EF005FDB85 /* AddProtocols.swift in Sources */,
 				114112232C873AD700257C4E /* CoreDataManager.swift in Sources */,
 				114112352C88B64800257C4E /* AddViewController.swift in Sources */,
 				114112022C8357AC00257C4E /* SceneDelegate.swift in Sources */,

@@ -30,18 +30,6 @@ extension ViewController: UITableViewDelegate {
         configuration.performsFirstActionWithFullSwipe = true
         return configuration
     }
-    
-    
-    //        func completeTaskByIndex(at indexPathRow: Int) {
-    //            let task = viewModel.currentTask(by: indexPathRow)
-    //            viewModel.toogleCompleted(task: task)
-    //            tableView.reloadData()
-    //        }
-    //
-    //        func completeTask(task: TaskEntityDTO) {
-    //            presenter?.togleTask(task: task)
-    //        }
-    //    }
 }
 
 
@@ -54,16 +42,4 @@ extension ViewController: CustomCellDelegate {
                                  indexOfSection: filterSegmentedContoll.selectedSegmentIndex)
         }
     }
-    
-//    func getNeedViewModel(indexPath: Int) -> TaskEntityDTO? {
-//        var task: TaskEntityDTO?
-//        if filterSegmentedContoll.selectedSegmentIndex == 0 {
-//            task = todos[indexPath]
-//        } else if filterSegmentedContoll.selectedSegmentIndex == 1 {
-//            task = todos.filter { $0.copmleted }[indexPath]
-//        } else {
-//            task = todos.filter { !$0.copmleted }[indexPath]
-//        }
-//        return task
-//    }
 }

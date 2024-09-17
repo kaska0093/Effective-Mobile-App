@@ -14,6 +14,7 @@ class CoreDataManager {
     
     func saveContext() {
         let context = persistantContainer.viewContext
+        
         if context.hasChanges {
             do {
                 try context.save()
@@ -26,6 +27,7 @@ class CoreDataManager {
     
     
     lazy var persistantContainer: NSPersistentContainer = {
+        
         let container = NSPersistentContainer(name: "CoreDataModel")
         container.loadPersistentStores { _, error in
             if let error = error as NSError? {
@@ -41,7 +43,41 @@ class CoreDataManager {
 }
 
 extension CoreDataManager: AddCoreDataInputProtocol {
+    
+    func updateTaskWithComplition(id: UUID, taskName: String, dueOn: Date, complition: @escaping (Result<Bool, any Error>) -> Void) {
+        
+        let fetchRequest: NSFetchRequest<TaskModelFromDB> = TaskModelFromDB.fetchRequest()
+        let predicate = NSPredicate(format: "id=%@", id.uuidString)
+        fetchRequest.predicate = predicate
+        
+        do {
+            let fetchTasks = try context.fetch(fetchRequest)
+            for task in fetchTasks {
+                task.dueOn = dueOn
+                task.todo = taskName
+            }
+            saveContext()
+            complition(.success(true))
+        } catch let error as NSError {
+            complition(.failure(error))
+        }
+    }
+    
+    
+    func addNewTaskWithComplition(taskName: String, dueOn: Date, complition: @escaping (Result<Bool, any Error>) -> Void) {
+        
+        let task = TaskModelFromDB(context: context)
+        task.todo = taskName
+        task.dueOn = dueOn
+        task.id = UUID()
+        task.completed = false
+        saveContext()
+        complition(.success(true))
+    }
+}
 
+extension CoreDataManager: CoreDataInputProtocol {
+    
     func addNewTask(taskName: String, dueOn: Date) {
         let task = TaskModelFromDB(context: context)
         task.todo = taskName
@@ -50,9 +86,6 @@ extension CoreDataManager: AddCoreDataInputProtocol {
         task.completed = false
         saveContext()
     }
-}
-
-extension CoreDataManager: CoreDataInputProtocol {
     
     func getDataFromStorage() {
         
@@ -81,6 +114,7 @@ extension CoreDataManager: CoreDataInputProtocol {
         
           
     func toogleCompleted(id: UUID) {
+        
         let fetchRequest: NSFetchRequest<TaskModelFromDB> = TaskModelFromDB.fetchRequest()
         let predicate = NSPredicate(format: "id=%@", id.uuidString)
         fetchRequest.predicate = predicate

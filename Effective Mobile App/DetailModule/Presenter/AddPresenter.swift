@@ -9,14 +9,18 @@ import Foundation
 
 class AddPresenter: AddViewOutput {
     
-    var view: (any AddViewInput)?
+    var view: AddViewInput?
+    var interactor:  AddInteractorInputProtocol?
+    var router: AddRouterProtocol?
     
-    var interactor: (any AddInteractorInputProtocol)?
-
-    var router: (any AddRouterProtocol)?
+    func userPressedAddButton(taskName: String, dueOn: Date) {
+        interactor?.addTask(taskName: taskName,
+                            dueOn: dueOn)
+    }
     
-    func viewWillAppear() {
-        //
+    func userPressedUpdateButton(taskName: String, dueOn: Date) {
+        interactor?.updateTask(taskName: taskName,
+                               dueOn: dueOn)
     }
     
     
@@ -25,6 +29,13 @@ class AddPresenter: AddViewOutput {
 extension AddPresenter: AddInteractorOutputProtocol {
     
     func retrieveComplitionMark() {
-        //
+        if let view = view {
+            router?.navigateBackToListViewController(from: view)
+        }
+    }
+    
+    func setupUIForEdditing(task:String, dueOn: Date) {
+        view?.updateUI(task: task,
+                       dueOn: dueOn)
     }
 }
