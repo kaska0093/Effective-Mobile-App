@@ -23,6 +23,11 @@ class AddPresenter: AddViewOutput {
                                dueOn: dueOn)
     }
     
+    func userPressedExit() {
+        if let view = view {
+            router?.navigateBackToListViewController(from: view)
+        }    }
+    
     
 }
 

@@ -25,6 +25,7 @@ protocol AddViewOutput: AnyObject {
 
     func userPressedAddButton(taskName: String, dueOn: Date) 
     func userPressedUpdateButton(taskName: String, dueOn: Date)
+    func userPressedExit() 
 }
 
 protocol AddInteractorInputProtocol: AnyObject {

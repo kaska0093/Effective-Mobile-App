@@ -40,6 +40,7 @@ class AddRouter: AddRouterProtocol {
         guard let viewVC = view as? UIViewController else {
             fatalError("Invalid view protocol type")
         }
-        viewVC.navigationController?.popViewController(animated: true)
+        //viewVC.navigationController?.popViewController(animated: true)
+        viewVC.dismiss(animated: true)
     }
 }

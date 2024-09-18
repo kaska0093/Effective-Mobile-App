@@ -13,7 +13,7 @@ class MainRouter: TodoListRouterProtocol {
     static func createTodoListModule() -> UIViewController {
         
         let mainViewController = ViewController()
-        let navViewController = UINavigationController(rootViewController: mainViewController)
+        //let navViewController = UINavigationController(rootViewController: mainViewController)
         
         let presenter = MainPresenter()
         let interactor = MainInteractor()
@@ -33,7 +33,7 @@ class MainRouter: TodoListRouterProtocol {
         
         coreDaraManager.interactor = interactor
         
-        return navViewController
+        return mainViewController
     }
     
     func presentToDoDetailScreen(from view: MainViewInput, for todo: TaskEntityDTO?) {
@@ -43,6 +43,8 @@ class MainRouter: TodoListRouterProtocol {
         guard let viewVC = view as? UIViewController else {
             fatalError("Invalid View Protocol type")
         }
-        viewVC.navigationController?.pushViewController(addVC, animated: true)
+        //viewVC.navigationController?.pushViewController(addVC, animated: true)
+        addVC.modalPresentationStyle = .fullScreen
+        viewVC.present(addVC, animated: true)
     }
 }
